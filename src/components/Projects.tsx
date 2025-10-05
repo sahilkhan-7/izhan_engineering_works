@@ -671,7 +671,7 @@ const mockProjectData = [
     location: "Ahmedabad, Gujarat",
     type: "Industrial", 
     description: "Large-scale structural fabrication for automotive manufacturing unit",
-    media: ["/31fd7e99eeea533f8c0d92108450ed3c.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/IMG-20250509-WA0017.jpg"]
+    media: ["/6186731d8ac59e67da59f78184af9289.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/IMG-20250509-WA0017.jpg"]
   },
   {
     id: "5",
