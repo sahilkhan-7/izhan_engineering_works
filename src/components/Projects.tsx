@@ -655,7 +655,7 @@ const mockProjectData = [
     location: "Delhi, India",
     type: "Residential",
     description: "Custom rolling shutters with premium finishing for luxury homes",
-    media: ["/VID20240818185218.mp4", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/941005d759413b19ae7a434278ce2f01.jpg"]
+    media: ["/IMG-20250509-WA0017.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/941005d759413b19ae7a434278ce2f01.jpg"]
   },
   {
     id: "3",
@@ -663,7 +663,7 @@ const mockProjectData = [
     location: "Mumbai, Maharashtra", 
     type: "Commercial",
     description: "Decorative and functional railings for corporate office complex",
-    media: ["/994733ef131b9cc1f0d4255bed83a8e8.jpg", "/VID20250501125445.mp4", "/20171116_162231.jpg", "/IMG-20250509-WA0017.jpg"]
+    media: ["/994733ef131b9cc1f0d4255bed83a8e8.jpg", "/IMG-20250509-WA0017.jpg", "/20171116_162231.jpg", "/IMG-20250509-WA0017.jpg"]
   },
   {
     id: "4",
@@ -671,7 +671,7 @@ const mockProjectData = [
     location: "Ahmedabad, Gujarat",
     type: "Industrial", 
     description: "Large-scale structural fabrication for automotive manufacturing unit",
-    media: ["/31fd7e99eeea533f8c0d92108450ed3c.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/VID20250502145823.mp4"]
+    media: ["/31fd7e99eeea533f8c0d92108450ed3c.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/IMG-20250509-WA0017.jpg"]
   },
   {
     id: "5",

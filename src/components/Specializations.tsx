@@ -458,19 +458,19 @@ const mockSpecializationData = [
     id: "shutters",
     title: "Rolling Shutters",
     description: "High-quality rolling shutters with smooth operation and enhanced security features for shops and warehouses.",
-    media: ["/VID20240818185218.mp4", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/941005d759413b19ae7a434278ce2f01.jpg"]
+    media: ["/IMG-20250509-WA0017.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/941005d759413b19ae7a434278ce2f01.jpg"]
   },
   {
     id: "railings",
     title: "Decorative Railings",
     description: "Artistic and functional railings for staircases, balconies, and terraces with intricate designs.",
-    media: ["/994733ef131b9cc1f0d4255bed83a8e8.jpg", "/VID20250501125445.mp4", "/20171116_162231.jpg", "/IMG-20250509-WA0017.jpg"]
+    media: ["/994733ef131b9cc1f0d4255bed83a8e8.jpg", "/941005d759413b19ae7a434278ce2f01.jpg", "/20171116_162231.jpg", "/IMG-20250509-WA0017.jpg"]
   },
   {
     id: "grills",
     title: "Window Grills & Security",
     description: "Modern security grills with aesthetic appeal, providing safety without compromising on design.",
-    media: ["/31fd7e99eeea533f8c0d92108450ed3c.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/VID20250502145823.mp4"]
+    media: ["/31fd7e99eeea533f8c0d92108450ed3c.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/941005d759413b19ae7a434278ce2f01.jpg"]
   },
   {
     id: "structures",
@@ -482,7 +482,7 @@ const mockSpecializationData = [
     id: "custom",
     title: "Custom Metalwork",
     description: "Bespoke metal solutions tailored to unique requirements with precision engineering and craftsmanship.",
-    media: ["/VID20240818185218.mp4", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/941005d759413b19ae7a434278ce2f01.jpg"]
+    media: ["/941005d759413b19ae7a434278ce2f01.jpg", "/97178d9a2cb9c30866cdd1f5c63a80ac.jpg", "/941005d759413b19ae7a434278ce2f01.jpg"]
   }
 ];
 
