@@ -1,0 +1,33 @@
+[
+    {
+      "id": "gates",
+      "title": "Metal Gates",
+      "thumbnail": "/specializations/gates.jpg",
+      "media": [
+        "/projects/gates1.jpg",
+        "/projects/gates2.jpg",
+        "/projects/gates3.jpg"
+      ]
+    },
+    {
+      "id": "railings",
+      "title": "Stainless Steel Railings",
+      "thumbnail": "/specializations/railings.jpg",
+      "media": [
+        "/projects/railing1.jpg",
+        "/projects/railing2.jpg",
+        "/projects/railing3.jpg"
+      ]
+    },
+    {
+      "id": "shutters",
+      "title": "Rolling Shutters",
+      "thumbnail": "/specializations/shutters.jpg",
+      "media": [
+        "/projects/shutter1.jpg",
+        "/projects/shutter-video.mp4",
+        "/projects/shutter3.jpg"
+      ]
+    }
+  ]
+  

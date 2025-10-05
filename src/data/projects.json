@@ -1,0 +1,78 @@
+[
+    {
+      "id": "p1",
+      "title": "Industrial Shutter Installation",
+      "location": "Sitapura, Jaipur",
+      "type": "Rolling Shutters",
+      "description": "Heavy-duty rolling shutters installed for a manufacturing unit with automated locking mechanism.",
+      "media": [
+        "/projects/project1/1.webp",
+        "/projects/project1/2.webp",
+        "/projects/project1/3.webp",
+        "/projects/project1/4.webp",
+        "/projects/project1/5.webp",
+        "/projects/project1/6.webp"
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "Stainless Steel Railings",
+      "location": "Malviya Nagar, Jaipur",
+      "type": "SS Balcony Railings",
+      "description": "Polished stainless steel railings installed with a minimalistic design and edge protection.",
+      "media": [
+        "/projects/project1/1.webp",
+        "/projects/project1/2.webp",
+        "/projects/project1/3.webp",
+        "/projects/project1/4.webp",
+        "/projects/project1/5.webp",
+        "/projects/project1/6.webp"
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Designer Main Gate",
+      "location": "Vaishali Nagar, Jaipur",
+      "type": "Custom Metal Gate",
+      "description": "A CNC cut designer gate fabricated with matte finish and smart automation for remote access.",
+      "media": [
+        "/projects/project1/1.webp",
+        "/projects/project1/2.webp",
+        "/projects/project1/3.webp",
+        "/projects/project1/4.webp",
+        "/projects/project1/5.webp",
+        "/projects/project1/6.webp"
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "Industrial Shed Fabrication",
+      "location": "RIICO Industrial Area, Bhiwadi",
+      "type": "Structural Fabrication",
+      "description": "Built a robust steel shed structure for an industrial plant with crane support.",
+      "media": [
+        "/projects/project1/1.webp",
+        "/projects/project1/2.webp",
+        "/projects/project1/3.webp",
+        "/projects/project1/4.webp",
+        "/projects/project1/5.webp",
+        "/projects/project1/6.webp"
+      ]
+    },
+    {
+      "id": "p5",
+      "title": "Residential Staircase Railings",
+      "location": "Ajmer Road, Jaipur",
+      "type": "Staircase Fabrication",
+      "description": "Modern indoor staircase railing with glass and SS combo for premium apartments.",
+      "media": [
+        "/projects/project1/1.webp",
+        "/projects/project1/2.webp",
+        "/projects/project1/3.webp",
+        "/projects/project1/4.webp",
+        "/projects/project1/5.webp",
+        "/projects/project1/6.webp"
+      ]
+    }
+  ]
+  
