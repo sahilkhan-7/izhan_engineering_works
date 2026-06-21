@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  price       String
+  category    String
+  description String
+  features    String // JSON string of features
+  media       String // JSON string of media URLs
+  youtubeUrl  String? // Optional YouTube video link
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model TeamMember {
+  id             String   @id @default(cuid())
+  name           String
+  role           String
+  specialization String
+  experience     String
+  location       String
+  image          String
+  isOwner        Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  location    String
+  type        String
+  description String
+  media       String // JSON string of media URLs
+  youtubeUrl  String? // Optional YouTube video link
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AboutContent {
+  id              String   @id @default("singleton")
+  mainDescription String
+  stats           String   // JSON string of stats [{icon, number, label, description}]
+  features        String   // JSON string of features [{title, description}]
+  updatedAt       DateTime @updatedAt
+}

@@ -110,11 +110,12 @@ export default function Navbar({ isDark, toggleDark }: NavbarProps) {
   const handleNavClick = () => setMenuOpen(false);
 
   const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Specializations', href: '#specialization' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Team', href: '/team' }
+    { name: 'About', href: '/#about' },
+    { name: 'Specializations', href: '/#specialization' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'Products', href: '/products' },
+    { name: 'Team', href: '/team' },
+    { name: 'Contact', href: '/#contact' }
   ];
 
   return (

@@ -323,7 +323,7 @@ export default function Footer({ isDark }: FooterProps) {
   };
 
   const contactInfo = [
-    { icon: Phone, text: "+91 98765 43210", href: "tel:+919876543210" },
+    { icon: Phone, text: "+91 98872 60947", href: "tel:+919887260947" },
     { icon: Phone, text: "+91 99988 11223", href: "tel:+919998811223" },
     { icon: Phone, text: "+91 88110 22110", href: "tel:+918811022110" },
     { icon: Mail, text: "contact@izhanworks.in", href: "mailto:contact@izhanworks.in" },

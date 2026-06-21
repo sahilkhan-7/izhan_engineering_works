@@ -367,15 +367,15 @@ export default function Contact({ isDark }: ContactProps) {
     {
       icon: MessageCircle,
       title: "WhatsApp Us",
-      items: ["+91 98765 43210"],
-      action: () => window.open(`https://wa.me/919876543210?text=Hi! I'm interested in your metal fabrication services.`, '_blank'),
+      items: ["+91 98872 60947"],
+      action: () => window.open(`https://wa.me/919887260947?text=Hi! I'm interested in your metal fabrication services.`, '_blank'),
       color: "from-green-500 to-green-600",
       isClickable: true
     },
     {
       icon: Phone,
       title: "Call Us",
-      items: ["+91 98765 43210", "+91 99988 11223"],
+      items: ["+91-9887260947", "+91-9887260947"],
       action: (phone: string) => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self'),
       color: "from-blue-500 to-blue-600",
       isClickable: true
@@ -435,36 +435,11 @@ export default function Contact({ isDark }: ContactProps) {
       }`}
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className={`absolute top-20 right-20 w-80 h-80 rounded-full opacity-5 ${
-            isDark ? 'bg-gradient-to-r from-orange-500 to-yellow-500' : 'bg-gradient-to-r from-orange-300 to-yellow-300'
-          }`}
-        />
-        <motion.div
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 0.8, 1]
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className={`absolute bottom-20 left-20 w-64 h-64 rounded-full opacity-5 ${
-            isDark ? 'bg-gradient-to-r from-yellow-500 to-orange-500' : 'bg-gradient-to-r from-yellow-300 to-orange-300'
-          }`}
-        />
-      </div>
+      <div className={`absolute inset-0 opacity-20 pointer-events-none ${
+        isDark
+          ? 'bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-orange-900/10 via-transparent to-transparent'
+          : 'bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-orange-200/30 via-transparent to-transparent'
+      }`} />
 
       <motion.div
         variants={containerVariants}
@@ -506,7 +481,7 @@ export default function Contact({ isDark }: ContactProps) {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Methods */}
           <motion.div variants={itemVariants} className="space-y-6">
             {contactInfo.map((info, index) => (
@@ -536,7 +511,7 @@ export default function Contact({ isDark }: ContactProps) {
                           key={i}
                           whileHover={{ scale: 1.02, x: 5 }}
                           whileTap={{ scale: 0.98 }}
-                          className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors text-left ${
+                          className={`flex items-center gap-2 px-3 py-2 -mx-3 rounded-lg transition-colors text-left ${
                             isDark 
                               ? 'text-gray-300 hover:text-white hover:bg-white/10' 
                               : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
@@ -638,7 +613,7 @@ export default function Contact({ isDark }: ContactProps) {
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.6241634638686!2d75.76865967448933!3d26.91542045997581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5d4113be3cf%3A0x7126a96f1b4fb39d!2sIzhan%20Engineering%20Works!5e0!3m2!1sen!2sin!4v1759666974307!5m2!1sen!2sin" 
                 width="100%" 
-                height="320" 
+                height="250" 
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy" 
@@ -657,7 +632,7 @@ export default function Contact({ isDark }: ContactProps) {
           <motion.button
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => window.open(`https://wa.me/919876543210?text=Hi! I'm interested in your metal fabrication services.`, '_blank')}
+            onClick={() => window.open(`https://wa.me/919887260947?text=Hi! I'm interested in your metal fabrication services.`, '_blank')}
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <MessageCircle className="w-6 h-6" />

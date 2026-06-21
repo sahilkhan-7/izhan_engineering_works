@@ -449,36 +449,11 @@ export default function Testimonials({ isDark }: TestimonialsProps) {
       id="testimonials"
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className={`absolute top-10 left-10 w-96 h-96 rounded-full opacity-5 ${
-            isDark ? 'bg-gradient-to-r from-orange-500 to-yellow-500' : 'bg-gradient-to-r from-orange-300 to-yellow-300'
-          }`}
-        />
-        <motion.div
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 0.8, 1]
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className={`absolute bottom-10 right-10 w-72 h-72 rounded-full opacity-5 ${
-            isDark ? 'bg-gradient-to-r from-yellow-500 to-orange-500' : 'bg-gradient-to-r from-yellow-300 to-orange-300'
-          }`}
-        />
-      </div>
+      <div className={`absolute inset-0 opacity-20 pointer-events-none ${
+        isDark
+          ? 'bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-orange-900/10 via-transparent to-transparent'
+          : 'bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-orange-200/30 via-transparent to-transparent'
+      }`} />
 
       <motion.div
         variants={containerVariants}
@@ -521,7 +496,7 @@ export default function Testimonials({ isDark }: TestimonialsProps) {
         </motion.div>
 
         {/* Circular Testimonials */}
-        <div className="relative">
+        <div className="relative -mx-4 md:-mx-10 overflow-hidden">
           {/* First Row - Left to Right */}
           <motion.div
             className="flex gap-6 mb-8"

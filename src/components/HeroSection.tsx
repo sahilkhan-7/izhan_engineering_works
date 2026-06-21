@@ -271,51 +271,27 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
     return () => clearInterval(interval);
   }, []);
 
-  // Background floating elements
-  const FloatingElement = ({ delay = 0, size = 100, duration = 20 }) => (
-    <motion.div
-      className={`absolute rounded-full pointer-events-none ${
-        isDark ? 'bg-orange-500/10' : 'bg-orange-200/30'
-      }`}
-      style={{
-        width: size,
-        height: size,
-        left: Math.random() * 100 + '%',
-        top: Math.random() * 100 + '%',
-      }}
-      animate={{
-        x: [0, Math.random() * 200 - 100],
-        y: [0, Math.random() * 200 - 100],
-        scale: [1, Math.random() + 0.5, 1],
-        rotate: [0, 360],
-      }}
-      transition={{
-        duration: duration,
-        repeat: Infinity,
-        repeatType: "reverse",
-        delay: delay,
-        ease: "easeInOut"
-      }}
-    />
-  );
-
   return (
     <section className={`relative w-full h-screen max-h-[900px] overflow-hidden ${
       isDark 
         ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-black' 
         : 'bg-gradient-to-br from-orange-50 via-yellow-50 to-white'
     }`}>
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        {[...Array(15)].map((_, i) => (
-          <FloatingElement 
-            key={i} 
-            delay={i * 0.5}
-            size={Math.random() * 250 + 50}
-            duration={Math.random() * 15 + 10}
-          />
-        ))}
-      </div>
+      {/* Elegant background overlay */}
+      <div className={`absolute inset-0 opacity-30 ${
+        isDark 
+          ? 'bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-900/20 via-gray-900 to-black' 
+          : 'bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-200/50 via-white to-orange-50'
+      }`} />
+      
+      {/* Subtle breathing accent */}
+      <motion.div
+        animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.05, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className={`absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full blur-[120px] pointer-events-none ${
+          isDark ? 'bg-orange-600/10' : 'bg-orange-400/10'
+        }`}
+      />
 
       {/* Main content */}
       <div className="relative z-10 flex items-center justify-center h-full px-6">

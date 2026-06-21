@@ -1,86 +1,3 @@
-// "use client";
-
-// import { motion } from "framer-motion";
-// import { Building2, MapPinned, CalendarCheck } from "lucide-react";
-
-// export default function About() {
-//   return (
-//     <section id="about" className="bg-gray-100 py-20 px-6 md:px-12">
-//       <div className="max-w-6xl mx-auto text-center">
-//         <motion.h2
-//           initial={{ opacity: 0, y: 40 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.6 }}
-//           className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
-//         >
-//           About Izhan Engineering Works
-//         </motion.h2>
-
-//         <motion.p
-//           initial={{ opacity: 0, y: 40 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.8 }}
-//           className="text-gray-600 max-w-3xl mx-auto text-lg"
-//         >
-//           Izhan Engineering Works is a trusted name in industrial and commercial fabrication services.
-//           From metal gates and shutters to full-scale custom projects, we’ve delivered premium
-//           solutions for over a decade — with excellence, innovation, and on-time delivery.
-//         </motion.p>
-
-//         {/* Stats */}
-//         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
-//           {/* Projects Completed */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 50 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.5 }}
-//             viewport={{ once: true }}
-//             className="flex items-start gap-4"
-//           >
-//             <Building2 className="w-10 h-10 text-blue-700 mt-1" />
-//             <div>
-//               <h4 className="text-xl font-bold text-gray-800">450+ Projects</h4>
-//               <p className="text-sm text-gray-600">Across residential, industrial, and commercial sectors</p>
-//             </div>
-//           </motion.div>
-
-//           {/* Locations */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 50 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.7 }}
-//             viewport={{ once: true }}
-//             className="flex items-start gap-4"
-//           >
-//             <MapPinned className="w-10 h-10 text-blue-700 mt-1" />
-//             <div>
-//               <h4 className="text-xl font-bold text-gray-800">20+ Cities</h4>
-//               <p className="text-sm text-gray-600">Jaipur, Delhi, Mumbai, Ahmedabad, Surat & more</p>
-//             </div>
-//           </motion.div>
-
-//           {/* Years of Experience */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 50 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.9 }}
-//             viewport={{ once: true }}
-//             className="flex items-start gap-4"
-//           >
-//             <CalendarCheck className="w-10 h-10 text-blue-700 mt-1" />
-//             <div>
-//               <h4 className="text-xl font-bold text-gray-800">12+ Years</h4>
-//               <p className="text-sm text-gray-600">Of trusted fabrication craftsmanship</p>
-//             </div>
-//           </motion.div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 "use client";
 
 import { motion, useInView } from "framer-motion";
@@ -182,34 +99,37 @@ export default function About({ isDark }: AboutProps) {
           : 'bg-gradient-to-br from-orange-50 via-white to-yellow-50'
       }`}
     >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className={`absolute rounded-full ${
-              isDark ? 'bg-orange-500/5' : 'bg-orange-200/20'
-            }`}
-            style={{
-              width: Math.random() * 150 + 50,
-              height: Math.random() * 150 + 50,
-              left: Math.random() * 100 + '%',
-              top: Math.random() * 100 + '%',
-            }}
-            animate={{
-              x: [0, Math.random() * 40 - 20],
-              y: [0, Math.random() * 40 - 20],
-              scale: [1, Math.random() * 0.3 + 0.8, 1],
-            }}
-            transition={{
-              duration: Math.random() * 15 + 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-              delay: i * 0.5,
-            }}
-          />
-        ))}
-      </div>
+      {/* Elegant background overlay */}
+      <div className={`absolute inset-0 opacity-40 pointer-events-none ${
+        isDark 
+          ? 'bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-orange-900/30 via-gray-900 to-black' 
+          : 'bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-orange-200/50 via-white to-orange-50/50'
+      }`} />
+      
+      {/* Subtle animated blobs instead of Math.random() */}
+      <motion.div
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+          rotate: [0, 90, 0]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className={`absolute -top-32 -left-32 w-96 h-96 rounded-full blur-[100px] pointer-events-none ${
+          isDark ? 'bg-orange-600/10' : 'bg-orange-400/20'
+        }`}
+      />
+      
+      <motion.div
+        animate={{ 
+          scale: [1, 1.1, 1],
+          opacity: [0.2, 0.4, 0.2],
+          rotate: [0, -90, 0]
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className={`absolute top-1/2 -right-48 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none ${
+          isDark ? 'bg-yellow-600/10' : 'bg-yellow-400/20'
+        }`}
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div

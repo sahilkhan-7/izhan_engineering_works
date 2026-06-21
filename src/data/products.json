@@ -1,0 +1,53 @@
+[
+  {
+    "id": "prod-1",
+    "name": "Heavy Duty Industrial Rolling Shutter",
+    "price": "Contact for Pricing",
+    "category": "Shutters",
+    "description": "Premium automated rolling shutters designed for factories and warehouses. Features motorized operation, manual override, and rust-resistant coating.",
+    "features": [
+      "Motorized automatic operation",
+      "Manual override chain",
+      "Anti-rust galvanized coating",
+      "Weather-resistant seals"
+    ],
+    "media": [
+      "/projects/project1/1.webp",
+      "/projects/project1/2.webp"
+    ]
+  },
+  {
+    "id": "prod-2",
+    "name": "Modern SS Staircase Railing",
+    "price": "₹850 per sq.ft",
+    "category": "Railings",
+    "description": "High-grade 304 stainless steel railing with toughened glass panels. Perfect for modern residential and commercial interiors.",
+    "features": [
+      "Grade 304 Stainless Steel",
+      "10mm Toughened Glass",
+      "Mirror Polish Finish",
+      "Corrosion Resistant"
+    ],
+    "media": [
+      "/projects/project1/3.webp",
+      "/projects/project1/4.webp"
+    ]
+  },
+  {
+    "id": "prod-3",
+    "name": "CNC Laser Cut Designer Main Gate",
+    "price": "₹1200 per sq.ft",
+    "category": "Gates",
+    "description": "Customizable laser-cut metal gates with powder coating finish. Adds a luxurious and secure entry to any property.",
+    "features": [
+      "Precision CNC Laser Cut",
+      "Heavy-duty hinges",
+      "Automated motor compatible",
+      "Anti-rust powder coated"
+    ],
+    "media": [
+      "/projects/project1/5.webp",
+      "/projects/project1/6.webp"
+    ]
+  }
+]
