@@ -20,7 +20,7 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
   }, []);
 
   return (
-    <section className={`relative w-full h-screen max-h-[900px] overflow-hidden ${
+    <section className={`relative w-full h-screen min-h-[750px] max-h-[900px] overflow-hidden ${
       isDark 
         ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-black' 
         : 'bg-gradient-to-br from-orange-50 via-yellow-50 to-white'
@@ -173,7 +173,7 @@ export default function HeroSection({ isDark }: HeroSectionProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2, duration: 1 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden [@media(min-height:650px)]:block"
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}
