@@ -290,6 +290,7 @@
 
 "use client";
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowUp, Zap } from 'lucide-react';
 
@@ -297,7 +298,27 @@ interface FooterProps {
   isDark: boolean;
 }
 
+interface ContactSettings {
+  email: string;
+  phone1: string;
+  phone2: string;
+  address: string;
+  mapUrl: string;
+  whatsapp: string;
+  instagram: string;
+  facebook: string;
+}
+
 export default function Footer({ isDark }: FooterProps) {
+  const [contactData, setContactData] = useState<ContactSettings | null>(null);
+
+  useEffect(() => {
+    fetch('/api/contact')
+      .then(res => res.json())
+      .then(data => setContactData(data))
+      .catch(console.error);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -323,18 +344,18 @@ export default function Footer({ isDark }: FooterProps) {
   };
 
   const contactInfo = [
-    { icon: Phone, text: "+91 98872 60947", href: "tel:+919887260947" },
-    { icon: Phone, text: "+91 99988 11223", href: "tel:+919998811223" },
-    { icon: Phone, text: "+91 88110 22110", href: "tel:+918811022110" },
-    { icon: Mail, text: "contact@izhanworks.in", href: "mailto:contact@izhanworks.in" },
+    { icon: Phone, text: contactData?.phone1 || "+91 98872 60947", href: `tel:${(contactData?.phone1 || "+919887260947").replace(/\s/g, '')}` },
+    ...(contactData?.phone2 ? [{ icon: Phone, text: contactData.phone2, href: `tel:${contactData.phone2.replace(/\s/g, '')}` }] : []),
+    { icon: Mail, text: contactData?.email || "contact@izhanworks.in", href: `mailto:${contactData?.email || "contact@izhanworks.in"}` },
   ];
 
   const quickLinks = [
     { name: 'About', href: '#about' },
     { name: 'Specializations', href: '#specialization' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Team', href: '/team' }
+    { name: 'Products', href: '/products' },
+    { name: 'Team', href: '/team' },
+    { name: 'Contact', href: '#contact' }
   ];
 
   return (
@@ -452,8 +473,7 @@ export default function Footer({ isDark }: FooterProps) {
                       <MapPin className="w-5 h-5 text-orange-400" />
                     </div>
                     <div className="group-hover:translate-x-1 transition-transform duration-300">
-                      <span className="block">Plot 14, Sitapura Industrial Area,</span>
-                      <span className="block">Jaipur, Rajasthan, India</span>
+                      <span className="block">{contactData?.address || "Jaipur, Rajasthan, India"}</span>
                     </div>
                   </div>
                 </motion.li>

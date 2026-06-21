@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Product {
@@ -54,4 +55,17 @@ model AboutContent {
   stats           String   // JSON string of stats [{icon, number, label, description}]
   features        String   // JSON string of features [{title, description}]
   updatedAt       DateTime @updatedAt
+}
+
+model ContactSettings {
+  id        String   @id @default("singleton")
+  email     String
+  phone1    String
+  phone2    String?
+  address   String
+  mapUrl    String?
+  whatsapp  String?
+  instagram String?
+  facebook  String?
+  updatedAt DateTime @updatedAt
 }

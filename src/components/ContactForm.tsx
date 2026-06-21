@@ -347,35 +347,57 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, MessageCircle, Instagram, Facebook, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Instagram, Facebook, ExternalLink, RefreshCw } from "lucide-react";
 
 interface ContactProps {
   isDark: boolean;
 }
 
+interface ContactSettings {
+  email: string;
+  phone1: string;
+  phone2: string;
+  address: string;
+  mapUrl: string;
+  whatsapp: string;
+  instagram: string;
+  facebook: string;
+}
+
 export default function Contact({ isDark }: ContactProps) {
+  const [contactData, setContactData] = useState<ContactSettings | null>(null);
+
+  useEffect(() => {
+    fetch('/api/contact')
+      .then(res => res.json())
+      .then(data => setContactData(data))
+      .catch(console.error);
+  }, []);
+
   const shopLocation = {
-    address: "56, Aulia Masjid, Khatipura Road, Jaipur, Rajasthan, India",
+    address: contactData?.address || "Jaipur, Rajasthan, India",
     lat: 26.8467,
     lng: 75.7794,
-    googleMapsUrl: "https://www.google.com/maps/place/Izhan+Engineering+Works/@26.9154205,75.7686597,17z/data=!3m1!4b1!4m6!3m5!1s0x396db5d4113be3cf:0x7126a96f1b4fb39d!8m2!3d26.9154157!4d75.7712346!16s%2Fg%2F11qfpzw__y"
+    googleMapsUrl: contactData?.mapUrl || "https://www.google.com/maps"
   };
+
+  const cleanWhatsapp = contactData?.whatsapp?.replace(/[^0-9]/g, '') || "919887260947";
 
   const contactInfo = [
     {
       icon: MessageCircle,
       title: "WhatsApp Us",
-      items: ["+91 98872 60947"],
-      action: () => window.open(`https://wa.me/919887260947?text=Hi! I'm interested in your metal fabrication services.`, '_blank'),
+      items: [contactData?.phone1 || "+91 98872 60947"],
+      action: () => window.open(`https://wa.me/${cleanWhatsapp}?text=Hi! I'm interested in your metal fabrication services.`, '_blank'),
       color: "from-green-500 to-green-600",
       isClickable: true
     },
     {
       icon: Phone,
       title: "Call Us",
-      items: ["+91-9887260947", "+91-9887260947"],
+      items: [contactData?.phone1 || "", contactData?.phone2 || ""].filter(Boolean),
       action: (phone: string) => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self'),
       color: "from-blue-500 to-blue-600",
       isClickable: true
@@ -383,7 +405,7 @@ export default function Contact({ isDark }: ContactProps) {
     {
       icon: Mail,
       title: "Email Us", 
-      items: ["contact@izhanworks.in", "info@izhanworks.in"],
+      items: [contactData?.email || "contact@izhanworks.in"],
       action: (email: string) => window.open(`mailto:${email}`, '_self'),
       color: "from-orange-500 to-yellow-500",
       isClickable: true
@@ -394,16 +416,16 @@ export default function Contact({ isDark }: ContactProps) {
     {
       icon: Instagram,
       name: "Instagram",
-      url: "https://instagram.com/izhanworks",
+      url: contactData?.instagram || "https://instagram.com/izhanworks",
       color: "from-pink-500 to-purple-600"
     },
     {
       icon: Facebook,
       name: "Facebook", 
-      url: "https://facebook.com/izhanworks",
+      url: contactData?.facebook || "https://facebook.com/izhanworks",
       color: "from-blue-600 to-blue-700"
     }
-  ];
+  ].filter(link => link.url);
 
   const containerVariants = {
     hidden: { opacity: 0 },

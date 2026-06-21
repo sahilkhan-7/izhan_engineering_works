@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // @ts-ignore - Next.js turbopack feature not yet typed
+  allowedDevOrigins: ['10.252.220.105'],
 };
 
 export default nextConfig;

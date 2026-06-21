@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { Building2, MapPin, Calendar, Award, Users, Zap } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 interface AboutProps {
   isDark: boolean;
@@ -11,8 +11,41 @@ interface AboutProps {
 export default function About({ isDark }: AboutProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  const [content, setContent] = useState({
+    mainDescription: "Izhan Engineering Works is a trusted name in industrial and residential fabrication. With years of experience, we deliver high-quality, durable, and precisely engineered metal solutions.",
+    stats: [] as any[],
+    features: [] as any[]
+  });
+  const [isLoading, setIsLoading] = useState(true);
 
-  const stats = [
+  useEffect(() => {
+    fetch('/api/about')
+      .then(res => res.json())
+      .then(data => {
+        setContent({
+          mainDescription: data.mainDescription,
+          stats: typeof data.stats === 'string' ? JSON.parse(data.stats) : data.stats,
+          features: typeof data.features === 'string' ? JSON.parse(data.features) : data.features
+        });
+        setIsLoading(false);
+      })
+      .catch(console.error);
+  }, []);
+
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Building2': return Building2;
+      case 'MapPin': return MapPin;
+      case 'Calendar': return Calendar;
+      case 'Award': return Award;
+      case 'Users': return Users;
+      case 'Zap': return Zap;
+      default: return Building2;
+    }
+  };
+
+  const defaultStats = [
     {
       icon: Building2,
       number: "450+",
@@ -36,7 +69,7 @@ export default function About({ isDark }: AboutProps) {
     }
   ];
 
-  const features = [
+  const defaultFeatures = [
     {
       icon: Award,
       title: "Premium Quality",
@@ -53,6 +86,17 @@ export default function About({ isDark }: AboutProps) {
       description: "Committed to on-time project completion without compromise"
     }
   ];
+
+  const displayStats = content.stats?.length > 0 ? content.stats.map((s, i) => ({
+    ...s,
+    icon: getIcon(s.icon),
+    color: defaultStats[i % defaultStats.length].color
+  })) : defaultStats;
+
+  const displayFeatures = content.features?.length > 0 ? content.features.map(f => ({
+    ...f,
+    icon: getIcon(f.icon)
+  })) : defaultFeatures;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -161,22 +205,18 @@ export default function About({ isDark }: AboutProps) {
             </motion.span>
           </motion.h2>
 
-          <motion.p
-            variants={itemVariants}
-            className={`text-lg md:text-xl max-w-4xl mx-auto leading-relaxed ${
-              isDark ? 'text-gray-300' : 'text-gray-600'
-            }`}
-          >
-            Izhan Engineering Works is a trusted name in industrial and commercial fabrication services.
-            From metal gates and shutters to full-scale custom projects, we've delivered premium
-            solutions for over a decade — with{' '}
-            <motion.span
-              className="bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent font-semibold"
-              whileHover={{ scale: 1.05 }}
+          {isLoading ? (
+            <div className="w-full h-24 bg-gray-200 dark:bg-gray-800 animate-pulse rounded-lg mt-6"></div>
+          ) : (
+            <motion.p
+              variants={itemVariants}
+              className={`text-lg md:text-xl max-w-4xl mx-auto leading-relaxed ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}
             >
-              excellence, innovation, and on-time delivery
-            </motion.span>.
-          </motion.p>
+              {content.mainDescription}
+            </motion.p>
+          )}
         </motion.div>
 
         {/* Stats Section */}
@@ -184,9 +224,9 @@ export default function About({ isDark }: AboutProps) {
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
         >
-          {stats.map((stat, index) => (
+          {displayStats.map((stat, index) => (
             <motion.div
-              key={stat.label}
+              key={index}
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.05, 
@@ -246,9 +286,9 @@ export default function About({ isDark }: AboutProps) {
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {features.map((feature, index) => (
+          {displayFeatures.map((feature, index) => (
             <motion.div
-              key={feature.title}
+              key={index}
               variants={itemVariants}
               whileHover={{ y: -5 }}
               className={`text-center p-6 rounded-xl ${

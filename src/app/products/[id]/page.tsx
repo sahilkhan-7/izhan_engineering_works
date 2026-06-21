@@ -69,8 +69,42 @@ export default function ProductDetailPage() {
 
   const featuresList = JSON.parse(product.features);
   const mediaList = JSON.parse(product.media);
-  const hasImages = mediaList.length > 0;
-  const currentImage = hasImages ? mediaList[activeImage] : "https://via.placeholder.com/800x600?text=No+Image";
+  
+  const mediaItems: any[] = [];
+  
+  if (product.youtubeUrl) {
+    let embedUrl = null;
+    let thumbnailUrl = null;
+
+    // Extract Video ID
+    const videoMatch = product.youtubeUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|shorts\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
+    // Extract Playlist ID
+    const playlistMatch = product.youtubeUrl.match(/youtube\.com\/playlist\?list=([^&?]+)/);
+
+    if (videoMatch && videoMatch[1]) {
+      const ytId = videoMatch[1];
+      embedUrl = `https://www.youtube.com/embed/${ytId}`;
+      thumbnailUrl = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+    } else if (playlistMatch && playlistMatch[1]) {
+      const playlistId = playlistMatch[1];
+      embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}`;
+      thumbnailUrl = "https://via.placeholder.com/400x300/ff9800/ffffff.png?text=Play+Video";
+    }
+
+    if (embedUrl) {
+      mediaItems.push({ 
+        type: 'youtube', 
+        url: embedUrl, 
+        thumbnail: thumbnailUrl 
+      });
+    }
+  }
+
+  mediaList.forEach((img: string) => {
+    mediaItems.push({ type: 'image', url: img, thumbnail: img });
+  });
+
+  const activeMedia = mediaItems[activeImage] || { type: 'image', url: "https://via.placeholder.com/800x600?text=No+Image", thumbnail: "https://via.placeholder.com/800x600?text=No+Image" };
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white flex flex-col transition-colors duration-500">
@@ -89,30 +123,31 @@ export default function ProductDetailPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Image & Video Gallery */}
             <div className="space-y-4">
-              {product.youtubeUrl ? (
+              {activeMedia.type === 'youtube' ? (
                 <div className="aspect-video relative rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
                   <iframe 
-                    src={product.youtubeUrl.replace("watch?v=", "embed/")} 
+                    src={activeMedia.url} 
                     className="absolute inset-0 w-full h-full"
                     allowFullScreen
                     title={product.name}
                   ></iframe>
                 </div>
               ) : (
-                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
                   <Image
-                    src={currentImage}
+                    src={activeMedia.url}
                     alt={product.name}
                     fill
                     className="object-cover"
                     unoptimized
+                    priority
                   />
                 </div>
               )}
               
-              {hasImages && (
+              {mediaItems.length > 1 && (
                 <div className="flex gap-4 overflow-x-auto pb-2">
-                  {mediaList.map((img: string, idx: number) => (
+                  {mediaItems.map((item, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveImage(idx)}
@@ -120,7 +155,14 @@ export default function ProductDetailPage() {
                         activeImage === idx ? 'border-orange-500 scale-105' : 'border-transparent opacity-70 hover:opacity-100'
                       }`}
                     >
-                      <Image src={img} alt="Thumbnail" fill className="object-cover" unoptimized />
+                      <Image src={item.thumbnail} alt="Thumbnail" fill className="object-cover" unoptimized />
+                      {item.type === 'youtube' && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                          <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white text-xs pl-1">
+                            ▶
+                          </div>
+                        </div>
+                      )}
                     </button>
                   ))}
                 </div>
