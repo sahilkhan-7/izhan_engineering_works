@@ -1,0 +1,6 @@
+*.env
+*.db
+*node_modules
+backend/uploads
+*__pycache__
+frontend/.next
